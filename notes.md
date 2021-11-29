@@ -26,3 +26,10 @@
 7. Setup Rakefile - add required fields
     require ‘./config/environment’ #requiring the environment file
     require ‘sinatra/activerecord/rake’ #loads Rake tasks
+8. Create DB migration
+    - for every table created, create a corresponding model class in models director, and a controller 
+    - Could use corneal scaffold NAME to set up folder structure and delete out spec file 
+    - Created Users table - Every user should have a unique username and password digest
+    - Create Log table - Every log should have a date, userid, etc.
+        - have foreign key of user id
+    - Rake db:migrate
