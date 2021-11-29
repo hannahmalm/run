@@ -18,4 +18,7 @@
     git commit -m 'added file structure'
 
 
-2. 
+2. Set up gemfile and bundle install gems
+3. Build out requirement file 
+4. Build out config.ru file
+5. Build out application_controller.rb
