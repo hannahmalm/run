@@ -33,3 +33,4 @@
     - Create Log table - Every log should have a date, userid, etc.
         - have foreign key of user id
     - Rake db:migrate
+9. 
