@@ -1,8 +1,6 @@
 # Run
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/run`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Welcome to your running log. Please run bundle install and shotgun to get started. Navigate to the link within the terminal to access this application. 
 
 ## Installation
 
@@ -22,7 +20,9 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+1. Run bundle install
+2. Run shotgun 
+3. Navigate to link within terminal
 
 ## Development
 
