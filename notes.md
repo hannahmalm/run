@@ -39,3 +39,8 @@
     - Logs belong to Users
 10. Views - The front end of the user facing part of the application. Has CSS, HTML, and Javascript. This is the only thing the user interacts with directly; Created Controllers & Views simultaniously
     - Layout view = standard view that has the yield, this will also have a nav bar
+11. Controllers - Go between for models and views - relays data from the view to the model and then back to the view
+     - It is the responsibility of either the session/user to log in or out 
+     **AFTER ADDING IN CONTROLLERS/ROUTES, ADD THEM INTO config.ru**
+     - User controller has signup(get & post), login(get&post), logout(get - does not get its own view), failure route
+     - Logs controller has logs(user page), get logs(render new page to create logs), post logs(actually create the new log), show logs()
