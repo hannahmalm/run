@@ -22,3 +22,7 @@
 3. Build out requirement file 
 4. Build out config.ru file
 5. Build out application_controller.rb
+6. Add index.erb file in views and run shotgun to test functionality
+7. Setup Rakefile - add required fields
+    require ‘./config/environment’ #requiring the environment file
+    require ‘sinatra/activerecord/rake’ #loads Rake tasks
