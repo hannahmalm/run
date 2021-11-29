@@ -28,7 +28,7 @@
     require ‘sinatra/activerecord/rake’ #loads Rake tasks
 8. Create DB migration
     - for every table created, create a corresponding model class in models director, and a controller 
-    - Could use corneal scaffold NAME to set up folder structure and delete out spec file 
+    - Could use corneal scaffold NAME to set up folder structure and delete out spec file - Didnt use   corneal for this but it is a possibility
     - Created Users table - Every user should have a unique username and password digest
     - Create Log table - Every log should have a date, userid, etc.
         - have foreign key of user id
@@ -37,3 +37,5 @@
     - User has many logs
     - User has secure password - see notes below
     - Logs belong to Users
+10. Views - The front end of the user facing part of the application. Has CSS, HTML, and Javascript. This is the only thing the user interacts with directly; Created Controllers & Views simultaniously
+    - Layout view = standard view that has the yield, this will also have a nav bar
