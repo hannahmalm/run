@@ -9,7 +9,9 @@ class ApplicationController < Sinatra::Base
         register Sinatra::Flash #sinatra takes this info and turns it into a hash
     end 
 
-   
+    get "/" do 
+        erb :index
+    end 
 
 
 end 
