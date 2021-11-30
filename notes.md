@@ -32,7 +32,8 @@
     - Created Users table - Every user should have a unique username and password digest
     - Create Log table - Every log should have a date, userid, etc.
         - have foreign key of user id
-    - Rake db:migrate
+    - rake db:create_migration NAME=create_users_table
+    - rake db:create_migration NAME=create_logs_table
     - Does not create models file, but creates the data base, structure of db and the tables to include
 9. Models - The logic of the web app. This is where data is manipulated/saved
     - User has many logs
