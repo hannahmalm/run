@@ -19,6 +19,10 @@ class ApplicationController < Sinatra::Base
             @current_user ||= User.find_by(id: session[:user_id]) 
             #Use ||= because if the current user is already called/found it wont look into the db again
         end 
+
+        def logged_in? #will return boolean t/f, if nil it will return false
+            !!current_user
+        end 
     end 
 
 end 
