@@ -14,4 +14,11 @@ class ApplicationController < Sinatra::Base
     end 
 
 
+    helpers do 
+        def current_user 
+            @current_user ||= User.find_by(id: session[:user_id]) 
+            #Use ||= because if the current user is already called/found it wont look into the db again
+        end 
+    end 
+
 end 
