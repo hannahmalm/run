@@ -1,13 +1,13 @@
 class UsersController < ApplicationController
 
     get "/login" do #render the login form
-        erb :login
+        erb :'/users/login' 
     end 
 
     post "/login" do #post - creating a key value pair to session hash, receive log in form, find the user, log the user in
          #find the user
          @user = User.find_by(username: params[:username])
-         #authenticate the user - this works with has_secure_password - verify the user is who they say they are
+         #authenticate the user - this works with has_secure_password - verify the user is who they say they are by checking hashed password to password given
          if @user && @user.authenticate(password: params[:password])
             #log the user in
             session[:user_id] = @user.id
@@ -25,7 +25,18 @@ class UsersController < ApplicationController
     end 
 
     get "/signup" do #render the signup form 
-        erb :signup
+        erb :'/users/signup'
+    end 
+
+
+    #1. A user must input a username AND a password. Both fields must be populated
+    #2. A user must have a unique username. If they dont, they will get an error that the username 
+    post "/signup" do 
+        user = User.new(params) #set local variable and inialize a new user by passing in the params
+        if user.save 
+            session[:user_id] = user.id #set the session equal to the user.id
+            redirect "/users/#{user.id}"#once signed up, redirect to the logs page
+        else 
     end 
 
 end 
