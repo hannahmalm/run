@@ -5,7 +5,14 @@ class UsersController < ApplicationController
     end 
 
     post '/login' do #post - creating a key value pair to session hash, receive log in form, find the user, log the user in
-
+         #find the user
+         @user = User.find_by(username: params[:username])
+         #authenticate the user - this works with has_secure_password - verify the user is who they say they are
+         if @user && @user.authenticate(password: params[:password])
+         #log the user in
+         session[:user_id] = user.id
+         #redirect to users landing page
+         redirect to "/users/#{user.id}"
     end 
 
     get '/signup' do #render the signup form 
