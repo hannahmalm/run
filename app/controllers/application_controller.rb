@@ -23,6 +23,12 @@ class ApplicationController < Sinatra::Base
         def logged_in? #will return boolean t/f, if nil it will return false
             !!current_user
         end 
+
+        def not_logged_in_helper
+            if !current_user
+                redirect to "/login"
+            end 
+        end 
     end 
 
 end 
