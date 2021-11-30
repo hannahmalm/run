@@ -37,6 +37,10 @@ class UsersController < ApplicationController
             session[:user_id] = user.id #set the session equal to the user.id
             redirect "/users/#{user.id}"#once signed up, redirect to the logs page
         else 
+            #this is a dynamic active record flash error that is standard for signup
+            flash[:errors] = "Signup Failure: #{user.errors.full_messages.to_sentence}" #https://stackoverflow.com/questions/15043272/errors-full-messages-format-in-rails-3
+            redirect "/signup" 
+        end 
     end 
 
 end 
