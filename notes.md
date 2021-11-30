@@ -1,3 +1,4 @@
+Basic App Setup
 1. Set up the file structure
     bundle gem run_log in terminal
     create repo in github and push
@@ -16,8 +17,6 @@
     touch config.ru
     git add .
     git commit -m 'added file structure'
-
-
 2. Set up gemfile and bundle install gems
 3. Build out requirement file 
 4. Build out config.ru file
@@ -40,6 +39,10 @@
     - User has many logs
     - User has secure password - see notes below
     - Logs belong to Users
+
+------------------------------------------------------
+Creating Views & Controllers
+
 10. Views - The front end of the user facing part of the application. Has CSS, HTML, and Javascript. This is the only thing the user interacts with directly; Created Controllers & Views simultaniously
     - Layout view = standard view that has the yield, this will also have a nav bar
 11. Controllers - Go between for models and views - relays data from the view to the model and then back to the view
@@ -49,3 +52,13 @@
      - Logs controller has logs(user page), get logs(render new page to create logs), post logs(actually create the new log), show logs()
 12. View --> Controller --> Model --> Controller --> View 
 13. MVC allows for organization and to keep files seperated using seperation of concerns 
+
+_______________________________________________________
+
+Order of Controller/View creation
+1. Users Controller
+    - Get and Post login Routes
+    - Login erb view file -> Form -> Rendered flash messages
+    - Get and Post Signup Routes
+    - Signup erb view file -> Form -> Rendered flash messages
+    **Used local variables whenever not rendering an erb**

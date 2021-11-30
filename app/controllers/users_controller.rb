@@ -19,19 +19,13 @@ class UsersController < ApplicationController
          end 
     end 
 
-    get "/users/:id" do #this is a User Show route 
-        not_logged_in_helper
-        "User Show Route"
-    end 
-
     get "/signup" do #render the signup form 
         erb :'/users/signup'
     end 
 
-
     #1. A user must input a username AND a password. Both fields must be populated
     #2. A user must have a unique username. If they dont, they will get an error that the username 
-    post "/signup" do 
+    post "/users" do 
         user = User.new(params) #set local variable and inialize a new user by passing in the params
         if user.save 
             session[:user_id] = user.id #set the session equal to the user.id
@@ -42,5 +36,11 @@ class UsersController < ApplicationController
             redirect "/signup" 
         end 
     end 
+
+    get "/users/:id" do #this is a User Show route 
+        not_logged_in_helper
+        "User Show Route"
+    end 
+
 
 end 
