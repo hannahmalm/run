@@ -20,6 +20,7 @@ class UsersController < ApplicationController
     end 
 
     get "/users/:id" do #this is a User Show route 
+        not_logged_in_helper
         "User Show Route"
     end 
 

@@ -13,7 +13,7 @@ gem 'sinatra'
 gem 'activerecord', '<=5.1', :require => 'active_record' #Active Record is used to establish connection w db
 gem 'sinatra-activerecord'
 # #gem 'rake' #Tool that automates certian jobs
-gem 'bcrypt'
+gem 'bcrypt' #hashes our passwords with hasing algorithm
 gem 'require_all'
 gem 'capybara'
 gem 'rack_session_access'
