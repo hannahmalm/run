@@ -6,13 +6,13 @@ class UsersController < ApplicationController
 
     post "/login" do #post - creating a key value pair to session hash, receive log in form, find the user, log the user in
          #find the user
-         @user = User.find_by(username: params[:username])
+         user = User.find_by(username: params[:username])
          #authenticate the user - this works with has_secure_password - verify the user is who they say they are by checking hashed password to password given
-         if @user && @user.authenticate(password: params[:password])
-            #log the user in
-            session[:user_id] = @user.id
+         if user && user.authenticate(params[:password])
+            #log the user in and set the session
+            session[:user_id] = user.id
             #redirect to users landing page via dynamic route
-            redirect to "users/#{@user.id}"
+            redirect to "users/#{user.id}"
          else 
             flash[:message] = "Please enter a valid Username or Password" #flash error - render in view
             redirect to '/login' #redirect to login
