@@ -35,6 +35,7 @@
     - rake db:create_migration NAME=create_users_table
     - rake db:create_migration NAME=create_logs_table
     - Does not create models file, but creates the data base, structure of db and the tables to include
+    - Once rake:db migrate is run then the schema is created
 9. Models - The logic of the web app. This is where data is manipulated/saved
     - User has many logs
     - User has secure password - see notes below
