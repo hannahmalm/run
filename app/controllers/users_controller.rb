@@ -26,20 +26,20 @@ class UsersController < ApplicationController
     #1. A user must input a username AND a password. Both fields must be populated
     #2. A user must have a unique username. If they dont, they will get an error that the username 
     post "/users" do 
-        user = User.new(params) #set local variable and inialize a new user by passing in the params
-        if user.save 
-            session[:user_id] = user.id #set the session equal to the user.id
-            redirect "/users/#{user.id}"#once signed up, redirect to the logs page
+        if params[:username] != "" && params[:password] != ""
+                @user = User.create(params)
+                redirect "/users/#{@user.id}"
         else 
             #this is a dynamic active record flash error that is standard for signup
-            flash[:errors] = "Signup Failure: #{user.errors.full_messages.to_sentence}" #https://stackoverflow.com/questions/15043272/errors-full-messages-format-in-rails-3
+            flash[:errors] = "Signup Failure: #{@user.errors.full_messages.to_sentence}" #https://stackoverflow.com/questions/15043272/errors-full-messages-format-in-rails-3
             redirect "/signup" 
         end 
     end 
 
-    get "/users/:id" do #this is a User Show route 
+    get "/users/:id" do #this is a User Show route, rendering should only happen from a get request
         not_logged_in_helper
-        "User Show Route"
+        @user = User.find_by(id: params[:id])
+        erb :'/users/show'
     end 
 
 
