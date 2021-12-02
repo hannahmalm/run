@@ -14,13 +14,12 @@ class LogsController < ApplicationController
             #redirect "/logs/index"
         else 
             #provide flash errors if logs are not completed - date, distance, pace are required
-            flash[:errors] = "Signup Failure: #{@log.errors.full_messages.to_sentence}"
+            flash[:errors] = "#{@log.errors.full_messages.to_sentence}"
             redirect to '/logs/new'
         end 
-
     end 
 
-    get '/log/:id'
+    get '/log/:id' do
         "Test"
     end 
 
