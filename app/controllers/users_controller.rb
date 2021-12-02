@@ -25,9 +25,10 @@ class UsersController < ApplicationController
 
     #1. A user must input a username AND a password. Both fields must be populated
     #2. A user must have a unique username. If they dont, they will get an error that the username 
-    post "/users" do 
-        if params[:username] != "" && params[:password] != ""
-                @user = User.create(params)
+    post "/signup" do 
+        @user = User.new(params)
+        if @user.save
+                session[:user_id] = @user.id #log them after signing up
                 redirect "/users/#{@user.id}"
         else 
             #this is a dynamic active record flash error that is standard for signup
@@ -45,7 +46,7 @@ class UsersController < ApplicationController
 
     get '/logout' do 
         session.clear
-        redirect to '/login'
+        redirect to '/'
     end 
 
 
