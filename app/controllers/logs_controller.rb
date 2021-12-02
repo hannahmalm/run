@@ -24,9 +24,9 @@ class LogsController < ApplicationController
     end 
 
     #show route for log 
-    get '/log/:id' do  #:id is the key in the key, value pair
+    get "/log/:id" do  #:id is the key in the key, value pair
        @log = Log.find(params[:id])
-       erb :'/logs/index'
+       erb :'/logs/show'
     end 
 
 end 
