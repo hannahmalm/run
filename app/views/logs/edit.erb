@@ -1,7 +1,7 @@
 <h2>Edit Log</h2>
 <%=flash[:error]%>
-<form action="/logs/<%=@log.id%>" method="POST" > <!--In Rack, you need to do post and hidden patch-->
-    <input id="hidden" type="hidden" name="_method" value="patch"/> <!--This is standard for patch in Rack-->
+<form action="/logs/<%=@log.id%>" method="POST" > <!--In Rack, you need to do post and also a hidden patch-->
+    <input id="hidden" type="hidden" name="_method" value="patch"/> <!--This is standard for patch in Rack - need to use middle ware RackOverride-->
 
     <label for="distance">Distance</label>
     <input type="text" name="log[distance]" value="<%=@log.distance%>" /> <!--Typing the value in here lets you see what is currently populated-->
