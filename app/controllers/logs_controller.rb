@@ -42,8 +42,14 @@ class LogsController < ApplicationController
     end 
 
     patch "/log/:id" do 
-        @log = Log.find_by_id(params[:id]) #<------MAKE THIS A HELPER METHOD
+       find_log_by_id
 
     end 
 
+
+    private 
+
+    def find_log_by_id
+        @log = Log.find_by_id(params[:id])
+    end 
 end 
