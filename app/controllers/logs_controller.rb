@@ -25,7 +25,7 @@ class LogsController < ApplicationController
 
     #show route for log 
     get "/logs/:id" do  #:id is the key in the key, value pair
-       @log = Log.find_by_id(params[:id])
+        find_log_by_id
        erb :'/logs/show'
     end 
 
@@ -41,9 +41,20 @@ class LogsController < ApplicationController
         end 
     end 
 
-    patch "/log/:id" do 
-       find_log_by_id
 
+    # patch '/logs/:id' do OLD PATCH METHOD
+    #         @log = Log.find_by_id(params[:id])
+    #         @log.update(distance: params[:distance])
+    #         @log.update(pace: params[:pace])
+    #         @log.update(avg_heart_rate: params[:avg_heart_rate])
+    #         @log.update(notes: params[:notes])
+    #         redirect to "/logs/#{@log.id}"        
+    # end 
+
+    patch "/log/:id" do 
+       find_log_by_id #find the log 
+       @log.update(params) #click submit to update the log - no need to write update out for all params
+       redirect "/logs/#{@log.id}" #redirect to low show page
     end 
 
 
