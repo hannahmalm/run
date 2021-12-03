@@ -62,3 +62,9 @@ Order of Controller/View creation
     - Get and Post Signup Routes
     - Signup erb view file -> Form -> Rendered flash messages
     **Used local variables whenever not rendering an erb**
+2. Logs Controller
+    - Get and Post route for creating a new log
+    - get route for showing an individual log
+    - edit route for editing an individual log
+    - index route for showing all logs
+    - delete route - ensure that only user that created can edit and delete
