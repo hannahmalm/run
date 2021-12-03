@@ -29,8 +29,14 @@ class LogsController < ApplicationController
        erb :'/logs/show'
     end 
 
-    get '/logs/:id/edit'
-        erb :'/logs/edit'
+    get '/logs/:id/edit' do 
+        not_logged_in_helper #must be logged in to edit a log
+        #determine who made the log - only they can edit it
+        if 
+             erb :'/logs/edit'
+        else 
+            
+        end 
     end 
 
 end 

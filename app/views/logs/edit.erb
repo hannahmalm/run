@@ -1,1 +1,19 @@
-<h2>Edit form</h2>
+<h2>Edit Log</h2>
+<%=flash[:error]%>
+<form action="/logs/<%=@log.id%>" method="POST" > <!--In Rack, you need to do post and hidden patch-->
+    <input id="hidden" type="hidden" name="_method" value="patch"/> <!--This is standard for patch in Rack-->
+
+    <label for="distance">Distance</label>
+    <input type="text" name="log[distance]" value="<%=@log.distance%>" /> <!--Typing the value in here lets you see what is currently populated-->
+
+    <label for="pace">Pace</label>
+    <input type="text"  name="log[pace]" value="<%=@log.pace%>" /> <!--Type the name as a key/value param so its easier to update in update controller-->
+
+    <label for="avg_heart_rate">Average Heart Rate</label>
+    <input type="text"  name="log[avg_heart_rate]" value="<%=@log.avg_heart_rate%>" />
+
+    <label for="notes">Notes</label>
+    <input type="text"  name="log[notes]" value="<%=@log.notes%>" />
+
+    <input type="submit" value="submit" />
+</form>
