@@ -29,4 +29,8 @@ class LogsController < ApplicationController
        erb :'/logs/show'
     end 
 
+    get '/logs/:id/edit'
+        erb :'/logs/edit'
+    end 
+
 end 
