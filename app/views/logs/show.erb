@@ -16,3 +16,7 @@ Notes:<%=@log.notes %>
 <br>
 <a href="/logs/<%=@log.id%>/edit">Edit Log </a>
 <br>
+<form method="POST" action="/logs/<%=@log.id%>">
+    <input type="hidden" name="_method" value="DELETE"/>
+    <input type="submit" value="Delete" />
+</form>
