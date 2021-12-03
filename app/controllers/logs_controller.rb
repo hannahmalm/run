@@ -33,10 +33,17 @@ class LogsController < ApplicationController
         not_logged_in_helper #must be logged in to edit a log
         #determine who made the log - only they can edit it
         if 
+            #find the log id that needs to be edited
+            @log = Log.find_by_id(params[:id])
              erb :'/logs/edit'
         else 
             
         end 
+    end 
+
+    patch "/log/:id" do 
+        @log = Log.find_by_id(params[:id]) #<------MAKE THIS A HELPER METHOD
+
     end 
 
 end 

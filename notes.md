@@ -66,5 +66,8 @@ Order of Controller/View creation
     - Get and Post route for creating a new log
     - get route for showing an individual log
     - edit route for editing an individual log
+        - Need to use a _hidden method and have a post method AND patch value
+        - Need to use rack override in config.ru to let patch and dlete requests work
+        - Allows the method to be overridden if params[:_method] is set. This is the middleware which supports the PUT and DELETE HTTP method types. (https://guides.rubyonrails.org/rails_on_rack.html)
     - index route for showing all logs
     - delete route - ensure that only user that created can edit and delete
