@@ -21,7 +21,7 @@ class LogsController < ApplicationController
         #     redirect "/logs/#{@log.id}"
         if params[:date] != "" && params[:distance] != "" && params[:pace] != ""
             @log = log = Log.create(:date => params[:date], :distance => params[:distance], :pace => params[:pace], :avg_heart_rate => params[:avg_heart_rate], :notes => params[:notes], :user_id => params[:user_id])
-            redirect to "/logs/#{@log.id}"
+            redirect to "/logs"
         else 
             #provide flash errors if logs are not completed - date, distance, pace are required
             flash[:errors] = "#{@log.errors.full_messages.to_sentence}"
