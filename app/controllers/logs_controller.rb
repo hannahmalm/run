@@ -40,7 +40,8 @@ class LogsController < ApplicationController
         #determine who made the log - only they can edit it
         @log = Log.find_by(params[:id])
         @user = User.find_by(params[:id])
-        if @log && @log.user == @current_user
+        #if @log && @log.user == @current_user
+        if log.user == current_user
             erb :'/logs/edit'
         else 
             flash[:error] = "You can only edit your log!"
