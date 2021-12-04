@@ -36,16 +36,16 @@ class LogsController < ApplicationController
         erb :'/logs/show'
     end 
 
-    get '/logs/:id/edit' do 
-        not_logged_in_helper #must be logged in to edit a log
-        find_log_by_id
-        @user = User.find_by(id: params[:id])
-        if belongs_to_user?(@log)
-            erb :'/logs/edit'
-        else 
-            redirect "/users/#{@user.id}"
-        end 
-    end 
+    # get '/logs/:id/edit' do 
+    #     not_logged_in_helper #must be logged in to edit a log
+    #     find_log_by_id
+    #     @user = User.find_by(id: params[:id])
+    #     if belongs_to_user?(@log)
+    #         erb :'/logs/edit'
+    #     else 
+    #         redirect "/users/#{current_user.id}"
+    #     end 
+    # end 
 
 
     # patch '/logs/:id' do OLD PATCH METHOD
