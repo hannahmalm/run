@@ -24,10 +24,6 @@ class ApplicationController < Sinatra::Base
             !!current_user
         end 
 
-        def belongs_to_user?(log)
-            log.user == current_user 
-        end 
-
         def not_logged_in_helper
             if !current_user
                 redirect to "/login"
