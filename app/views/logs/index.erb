@@ -1,5 +1,5 @@
-<h1>Welcome to the Run Log</h1>
-
-<%= @logs.each do |log|%>
-    <ul><a href="/logs/<%=log.id%>"> User ID:<%=log.user_id%></a>: <%=log.distance%> Miles - <%=log.pace%></ul>
-<%end%>
+<h1>Anonymously track your runs against others</h1>
+<h2>Your user id is: <%= @current_user.id %></h2>
+<% @logs.each do |log| %>
+    <ul><a href="/logs/<%=log.id%>"> User ID:<%=log.user_id%></a>: <%=log.distance%> Miles - <%=log.pace%> </ul>
+<% end %>

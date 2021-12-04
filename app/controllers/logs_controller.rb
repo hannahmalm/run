@@ -5,7 +5,6 @@ class LogsController < ApplicationController
         not_logged_in_helper
         @logs = Log.all
         erb :'logs/index'
-
     end 
 
     #render a form for logs
