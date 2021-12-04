@@ -45,11 +45,6 @@ class LogsController < ApplicationController
         else 
             flash[:error] = "You can only edit your log!"
             erb :'users/show'
-        # if @log.user_id == current_user.id
-        #     find_log_by_id
-        #     erb :'/logs/edit'
-        # else 
-           
         end 
     end 
 
