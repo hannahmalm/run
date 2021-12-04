@@ -31,20 +31,19 @@ class LogsController < ApplicationController
 
     #show route for log 
     get "/logs/:id" do  #:id is the key in the key, value pair
+        not_logged_in_helper
         find_log_by_id
-       erb :'/logs/show'
+        erb :'/logs/show'
     end 
 
     get '/logs/:id/edit' do 
         not_logged_in_helper #must be logged in to edit a log
-        #determine who made the log - only they can edit it
-        #if @log && @log.user == @current_user
         find_log_by_id
-        if @log
+        @user = User.find_by(id: params[:id])
+        if belongs_to_user?(@log)
             erb :'/logs/edit'
         else 
-            flash[:error] = "You can only edit your log!"
-            erb :'users/show'
+            redirect "/users/#{@user.id}"
         end 
     end 
 
