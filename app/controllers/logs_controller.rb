@@ -4,6 +4,7 @@ class LogsController < ApplicationController
     get '/logs' do 
         not_logged_in_helper
         @logs = Log.all
+        #@log_creator = Log.user.username
         erb :'logs/index'
     end 
 
