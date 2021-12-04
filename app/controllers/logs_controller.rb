@@ -38,11 +38,18 @@ class LogsController < ApplicationController
     get '/logs/:id/edit' do 
         not_logged_in_helper #must be logged in to edit a log
         #determine who made the log - only they can edit it
-        if @log.user == current_user
-            find_log_by_id
+        @log = Log.find_by(params[:id])
+        @user = User.find_by(params[:id])
+        if @log && @log.user == current_user
             erb :'/logs/edit'
         else 
-            redirect to "users/#{current_user.id}"
+            flash[:error] = "You can only edit your log!"
+            redirect to "users/#{user.id}"
+        # if @log.user_id == current_user.id
+        #     find_log_by_id
+        #     erb :'/logs/edit'
+        # else 
+           
         end 
     end 
 
