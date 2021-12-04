@@ -19,7 +19,6 @@ class LogsController < ApplicationController
         @log = Log.new(params)
         if @log.save 
             redirect "/logs/#{@log.id}"
-        #     #redirect "/logs/index"
         # else 
         # if params[:date] != "" && params[:distance] != "" && params[:pace] != ""
         #     @log = log = Log.create(:date => params[:date], :distance => params[:distance], :pace => params[:pace], :avg_heart_rate => params[:avg_heart_rate], :notes => params[:notes], :user_id => params[:user_id])
