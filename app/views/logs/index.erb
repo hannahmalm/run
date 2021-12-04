@@ -1,4 +1,4 @@
 <h1>Anonymously track your runs against others</h1>
 <% @logs.each do |log| %>
-    <ul><%=log.date%>: <%=log.distance%> Miles - <%=log.pace%> </ul>
+    <h4> <%=log.date%> - <%=log.distance%>- <%=log.pace%> - <a href="/log/<%=log.id%>">See More Specs</h4>   
 <% end %>
