@@ -1,0 +1,11 @@
+<h1>Welcome to the Run Log</h1>
+
+<%= @logs.each do |log|%>
+    <%= log.date%>
+    <%= log.date%>
+    <%= log.date%>
+    <%= log.date%>
+    <%= log.date%>
+    <%= log.date%>
+    <ul><a href="/logs/<%=log.id%>"> User ID:<%=log.user_id%></a>: <%=log.distance%> Miles - <%=log.pace%></ul>
+<%end%>
