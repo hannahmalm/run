@@ -47,6 +47,16 @@ class LogsController < ApplicationController
     #     end 
     # end 
 
+    get '/logs/:id/edit' do 
+        not_logged_in_helper
+        @log = Log.find(params[:id]) #find the log you want to edit 
+            if @log && @log.user == current_user
+                erb :'/logs/edit'
+            else 
+                redirect to "/users/#{current_user.id}"
+            end  
+    end 
+
 
     # patch '/logs/:id' do OLD PATCH METHOD
     #         @log = Log.find_by_id(params[:id])
