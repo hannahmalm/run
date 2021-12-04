@@ -1,5 +1,13 @@
 class LogsController < ApplicationController
 
+    #render all logs
+    get '/logs' do 
+        not_logged_in_helper
+        @logs = Log.all
+        erb :'logs/index'
+
+    end 
+
     #render a form for logs
     get '/logs/new' do 
         not_logged_in_helper #check to see if user is logged in
