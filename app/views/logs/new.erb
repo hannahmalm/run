@@ -1,12 +1,14 @@
 <h1>Create a new Run Log</h1>
 <h2 style="color: red;"><%= flash[:errors] %></h2>
+<h2 style="color: red;"><%= flash[:valid] %></h2>
+
 <div class="aligncenter">
 <form method="POST" action="/logs">
     <label for="date">Date</label>  
     <input type="date" id="date" name="date" html5: true/>
     <br>
     <label for="distance">Distance</label>
-    <input type="text" id="distance" name="distance" />
+    <input type="text" id="distance" name="distance" /> </label>Miles</label>
     <br>    
     <label for="pace">Pace</label>
     <input type="text" id="pace" name="pace" /> 
