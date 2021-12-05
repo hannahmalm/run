@@ -70,6 +70,18 @@ class LogsController < ApplicationController
        end 
     end 
 
+    delete '/logs/:id' do 
+        not_logged_in_helper
+        find_log_by_id
+        if @log && @log.user == current_user
+            @log.destroy
+            redirect "/logs"
+        else 
+            redirect "/logs"
+        end 
+    end 
+
+
 
     private 
 
