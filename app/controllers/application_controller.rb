@@ -29,6 +29,12 @@ class ApplicationController < Sinatra::Base
             @log && @log.user == current_user
         end 
 
+        def user_logs?
+            @log = Log.find_by(user_id: params[:user_id])
+            @user = User.find_by_id(params[:id])
+            @user.id == @log.user_id 
+        end 
+
         def not_logged_in_helper
             if !current_user
                 redirect to "/login"
