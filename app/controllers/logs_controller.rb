@@ -49,7 +49,8 @@ class LogsController < ApplicationController
 
     get '/logs/:id/edit' do 
         not_logged_in_helper
-        @log = Log.find(params[:id]) #find the log you want to edit 
+       # @log = Log.find(params[:id]) #find the log you want to edit 
+       find_log_by_id
             if @log && @log.user == current_user
                 erb :'/logs/edit'
             else 
@@ -57,22 +58,12 @@ class LogsController < ApplicationController
             end  
     end 
 
-
-    # patch '/logs/:id' do OLD PATCH METHOD
-    #         @log = Log.find_by_id(params[:id])
-    #         @log.update(distance: params[:distance])
-    #         @log.update(pace: params[:pace])
-    #         @log.update(avg_heart_rate: params[:avg_heart_rate])
-    #         @log.update(notes: params[:notes])
-    #         redirect to "/logs/#{@log.id}"        
-    # end 
-
     patch "/log/:id" do 
-       find_log_by_id #find the log 
        not_logged_in_helper #see if the user is logged in
+       find_log_by_id #find the log 
        if @log.user == current_user
             @log.update(params) #click submit to update the log - no need to write update out for all params
-            redirect "/logs/#{@log.id}" #redirect to low show page
+            redirect "/logs" #redirect to low show page
        else 
             redirect to "users/#{current_user.id}"
        end 
