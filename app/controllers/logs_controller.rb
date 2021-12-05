@@ -58,6 +58,7 @@ class LogsController < ApplicationController
             end  
     end 
 
+
     patch "/log/:id" do 
        not_logged_in_helper #see if the user is logged in
        find_log_by_id #find the log 
