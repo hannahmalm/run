@@ -40,6 +40,8 @@ class UsersController < ApplicationController
     get "/users/:id" do #this is a User Show route, rendering should only happen from a get request
         not_logged_in_helper
         @user = User.find_by(id: params[:id])
+        @log = Log.find_by(user_id: [params[:user_id]])
+        @logs = Log.all
         #initate logs here so we can render users logs
         erb :'/users/show'
     end 
