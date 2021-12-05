@@ -25,7 +25,8 @@ class ApplicationController < Sinatra::Base
         end 
 
         def belongs_to_user?(log)
-            log.user_id == current_user 
+            @log = Log.find_by_id(params[:id])
+            @log && @log.user == current_user
         end 
 
         def not_logged_in_helper
