@@ -12,8 +12,6 @@ Average Heart Rate:<%=@log.avg_heart_rate %>
 <br>
 Notes:<%=@log.notes %>
 <br>
-<br>
-<br>
 <% if current_user == @log.user %>
 <a href="/logs/<%=@log.id%>/edit">Edit Log </a>
 <br>
@@ -21,5 +19,5 @@ Notes:<%=@log.notes %>
     <input type="hidden" name="_method" value="DELETE"/>
     <input type="submit" value="Delete" />
 </form>
-
+<a href="/logs">Back to all logs</a>
 <% end %>
