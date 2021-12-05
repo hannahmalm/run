@@ -59,14 +59,14 @@ class LogsController < ApplicationController
     end 
 
 
-    patch "/log/:id" do 
+    patch "/logs/:id" do 
        not_logged_in_helper #see if the user is logged in
        find_log_by_id #find the log 
-       if @log.user == current_user
-            @log.update(params) #click submit to update the log - no need to write update out for all params
-            redirect "/logs" #redirect to low show page
+       if @log && @log.user == current_user
+            @log.update(params[:log]) #click submit to update the log - no need to write update out for all params
+            redirect "/logs/#{@log.id}" #redirect to log show page
        else 
-            redirect to "users/#{current_user.id}"
+            redirect to "/users/#{current_user.id}"
        end 
     end 
 
