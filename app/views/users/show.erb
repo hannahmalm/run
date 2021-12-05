@@ -1,5 +1,4 @@
 <h1>Welcome to the Run Log, <%=@user.username%>
-<br>
 <%=flash[:error]%>
 <h1>Please see your logs below</h1>
     <% @user.logs.each do |log| %>
