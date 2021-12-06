@@ -27,14 +27,14 @@ class LogsController < ApplicationController
 
     #show route for log 
     get "/logs/:id" do  #:id is the key in the key, value pair
-        not_logged_in_helper
-        find_log_by_id
+        not_logged_in_helper #determine if a user is logged in, else redirect to login
+        find_log_by_id #find the log id
         erb :'/logs/show'
     end 
 
     get '/logs/:id/edit' do 
-       not_logged_in_helper
-       find_log_by_id    # @log = Log.find(params[:id]) #find the log you want to edit 
+       not_logged_in_helper #determine if a user is logged in, else redirect to login
+       find_log_by_id    #find the log id
             if @log && @log.user == current_user
                 erb :'/logs/edit'
             else 
@@ -44,8 +44,8 @@ class LogsController < ApplicationController
 
 
     patch "/logs/:id" do 
-       not_logged_in_helper #see if the user is logged in
-       find_log_by_id #find the log 
+       not_logged_in_helper #determine if a user is logged in, else redirect to login
+       find_log_by_id #find the log id
        if @log && @log.user == current_user
             @log.update(params[:log]) #click submit to update the log - no need to write update out for all params
             redirect "/logs/#{@log.id}" #redirect to log show page
@@ -55,12 +55,13 @@ class LogsController < ApplicationController
     end 
 
     delete '/logs/:id' do 
-        not_logged_in_helper
-        find_log_by_id
+        not_logged_in_helper #determine if a user is logged in, else redirect to login
+        find_log_by_id #find the log id
         if @log && @log.user == current_user
             @log.destroy
             redirect "/logs"
         else 
+            flash[:delete] = "You can only delete your own logs."
             redirect "/logs"
         end 
     end 
