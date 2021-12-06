@@ -1,8 +1,8 @@
 <h1>Welcome to the Run Log, <%=@user.username%>
 <%=flash[:error]%>
-<h1>Please see your logs below</h1>
+<h3>Please see your logs below</h3>
     <% @user.logs.each do |log| %>
-        <h4> <%=log.date%> - <%=log.distance%> - <%=log.pace%> <a href="/logs/<%=log.id%>">See More Specs</a></h4>
+        <h4> <%=log.distance%> Miles at a <%=log.pace%> pace  on <%=log.date%> <a href="/logs/<%=log.id%>">See More Specs</a></h4>
     <% end %>
 <h4> <a href="/logs/new">Log a new run</a></h4>
 
