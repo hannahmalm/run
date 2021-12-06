@@ -42,13 +42,15 @@ class UsersController < ApplicationController
         @user = User.find_by(id: params[:id])
         @log = Log.find_by(user_id: [params[:user_id]])
         @logs = Log.all
-        #initate logs here so we can render users logs
         erb :'/users/show'
     end 
 
     get '/logout' do 
-        session.clear
-        redirect to '/'
+        if logged_in?
+            session.clear
+            redirect to '/'
+        else 
+            redirect to "/"
     end 
 
 
