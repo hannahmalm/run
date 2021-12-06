@@ -1,22 +1,21 @@
 class LogsController < ApplicationController
 
-    #render all logs
-    get '/logs' do 
-        not_logged_in_helper
-        @logs = Log.all.order(distance: :desc)
+   
+    get '/logs' do  #render all logs
+        not_logged_in_helper #determine if a user is logged in, else redirect to login
         find_log_by_id
-        @user = Log.find_by(params[:username])
-        erb :'logs/index'
+        @logs = Log.all.order(distance: :desc)
+        erb :'logs/index' #use instance variables to render erb 
     end 
 
-    #render a form for logs
-    get '/logs/new' do 
-        not_logged_in_helper #check to see if user is logged in
+   
+    get '/logs/new' do  #render a form for logs
+        not_logged_in_helper #determine if a user is logged in, else redirect to login
         erb :'/logs/new'
     end 
 
     post '/logs' do 
-        not_logged_in_helper #check to see if user is logged in  - if not logged in redirect
+        not_logged_in_helper #determine if a user is logged in, else redirect to login
         if params[:date] != "" && params[:distance] != "" && params[:pace] != "" 
             @log = Log.create(:date => params[:date], :distance => params[:distance], :pace => params[:pace], :avg_heart_rate => params[:avg_heart_rate], :notes => params[:notes], user_id: current_user.id)
             redirect to "/logs/#{@log.id}"
