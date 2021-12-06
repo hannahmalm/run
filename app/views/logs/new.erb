@@ -1,6 +1,17 @@
 <h1>Create a new Run Log</h1>
 <h2 style="color: red;"><%= flash[:errors] %></h2>
 <h2 style="color: red;"><%= flash[:valid] %></h2>
+<% if @log.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@log.errors.count, "Date cannot be in the future") %> </h2>
+
+    <ul>
+      <% @log.errors.each do |error| %>
+        <li><%= error.full_message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
 
 <div class="aligncenter">
 <form method="POST" action="/logs">
