@@ -3,8 +3,8 @@ class LogsController < ApplicationController
    
     get '/logs' do  #render all logs
         not_logged_in_helper #determine if a user is logged in, else redirect to login
-        find_log_by_id
-        @logs = Log.all.order(distance: :desc)
+        find_log_by_id #find the log id
+        @logs = Log.all.order(distance: :desc) #pass the erb an instance variable to iterate over
         erb :'logs/index' #use instance variables to render erb 
     end 
 
@@ -20,7 +20,6 @@ class LogsController < ApplicationController
             @log = Log.create(:date => params[:date], :distance => params[:distance], :pace => params[:pace], :avg_heart_rate => params[:avg_heart_rate], :notes => params[:notes], user_id: current_user.id)
             redirect to "/logs/#{@log.id}"
         else 
-            #provide flash errors if logs are not completed - date, distance, pace are required
             flash[:valid] = "You must enter a valid date, distance, and pace."
             redirect to '/logs/new'
         end 
@@ -32,17 +31,6 @@ class LogsController < ApplicationController
         find_log_by_id
         erb :'/logs/show'
     end 
-
-    # get '/logs/:id/edit' do 
-    #     not_logged_in_helper #must be logged in to edit a log
-    #     find_log_by_id
-    #     @user = User.find_by(id: params[:id])
-    #     if belongs_to_user?(@log)
-    #         erb :'/logs/edit'
-    #     else 
-    #         redirect "/users/#{current_user.id}"
-    #     end 
-    # end 
 
     get '/logs/:id/edit' do 
        not_logged_in_helper
