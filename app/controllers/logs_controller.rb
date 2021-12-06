@@ -3,7 +3,7 @@ class LogsController < ApplicationController
     #render all logs
     get '/logs' do 
         not_logged_in_helper
-        @logs = Log.all
+        @logs = Log.all.order(distance: :desc)
         find_log_by_id
         @user = Log.find_by(params[:username])
         erb :'logs/index'
@@ -46,9 +46,8 @@ class LogsController < ApplicationController
     # end 
 
     get '/logs/:id/edit' do 
-        not_logged_in_helper
-       # @log = Log.find(params[:id]) #find the log you want to edit 
-       find_log_by_id
+       not_logged_in_helper
+       find_log_by_id    # @log = Log.find(params[:id]) #find the log you want to edit 
             if @log && @log.user == current_user
                 erb :'/logs/edit'
             else 

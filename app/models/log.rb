@@ -10,4 +10,5 @@ class Log < ActiveRecord::Base
       errors.add(:date, "Date cannot be in the future")
     end
   end
+
 end 
