@@ -1,8 +1,8 @@
-<h1>Anonymously track your runs against others</h1>
+<h1>Anonymously track your distance against others</h1>
 <h2 style="color: red;"><%= flash[:delete] %></h2>
 <h2> Your user id is <%=current_user.id%>
-<% @logs.each do |log| %>
-    <h4> User #<%=log.user_id%>: <%=log.date%> - <%=log.distance%> - <%=log.pace%> <a href="/logs/<%=log.id%>">See More Specs</a></h4>
+<% @logs.each.with_index(1) do |log, index| %>
+    <h4> <%=index%>. User #<%=log.user_id%>: <%=log.date%> - <%=log.distance%> - <%=log.pace%> <a href="/logs/<%=log.id%>">See More Specs</a></h4>
 <% end %>
 
 <a href="/users/<%=current_user.id%>">Back to account</a>
