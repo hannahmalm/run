@@ -42,7 +42,12 @@ class UsersController < ApplicationController
         @user = User.find_by(id: params[:id])
         @log = Log.find_by(user_id: [params[:user_id]])
         @logs = Log.all
+        @total_distance = @users.sum(:total_distance)
         erb :'/users/show'
+    end 
+
+    def total_distance 
+        Log.all.sum(:distance)
     end 
 
     get '/logout' do 
@@ -51,6 +56,7 @@ class UsersController < ApplicationController
             redirect to '/'
         else 
             redirect to "/"
+        end 
     end 
 
 

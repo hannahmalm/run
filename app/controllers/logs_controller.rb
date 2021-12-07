@@ -5,6 +5,7 @@ class LogsController < ApplicationController
         not_logged_in_helper #determine if a user is logged in, else redirect to login
         find_log_by_id #find the log id
         @logs = Log.all.order(distance: :desc) #pass the erb an instance variable to iterate over
+        @total_distance = Log.all.sum(:distance)
         erb :'logs/index' #use instance variables to render erb 
     end 
 
@@ -65,8 +66,6 @@ class LogsController < ApplicationController
             redirect "/logs"
         end 
     end 
-
-
 
     private 
 
