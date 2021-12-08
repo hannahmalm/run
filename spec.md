@@ -8,13 +8,13 @@ Specs:
 - [x] Include at least one belongs_to relationship on another model (e.g. Post belongs_to User) - Log belongs to user
 - [x] Include user accounts with unique login attribute (username or email) - validated Unique username
 - [x] Ensure that the belongs_to resource has routes for Creating, Reading, Updating and Destroying
-- [x] Ensure that users can't modify content created by other users - links dont display and they cant edit others
+- [x] Ensure that users can't modify content created by other users - links dont display and they cant edit others 
 - [x] Include user input validations
 - [x] BONUS - not required - Display validation failures to user with error message (example form URL e.g. /posts/new) - Used sinatra flash for error messages
 - [ ] Your README.md includes a short description, install instructions, a contributors guide and a link to the license for your code
 
 Confirm
-- [ ] You have a large number of small Git commits
-- [ ] Your commit messages are meaningful
-- [ ] You made the changes in a commit that relate to the commit message
-- [ ] You don't include changes in a commit that aren't related to the commit message
+- [x] You have a large number of small Git commits
+- [x] Your commit messages are meaningful
+- [x] You made the changes in a commit that relate to the commit message
+- [x] You don't include changes in a commit that aren't related to the commit message - I did a couple times on accident but didnt know how to go back

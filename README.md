@@ -1,6 +1,6 @@
 # Run
 
-Welcome to your running log. Please run bundle install and shotgun to get started. Navigate to the link within the terminal to access this application. 
+Welcome to your running log. Please run rake db:migrate, bundle install and shotgun to get started. Navigate to the link within the terminal to access this application. 
 
 ## Installation
 
