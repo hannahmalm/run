@@ -11,4 +11,6 @@ class Log < ActiveRecord::Base
     end
   end
 
+
+  scope :sum_by_distance, -> {Log.joins(:user.id).group(:id).sum(:distance)}
 end 
