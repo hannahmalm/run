@@ -5,7 +5,6 @@ class LogsController < ApplicationController
         not_logged_in_helper #determine if a user is logged in, else redirect to login
         find_log_by_id #find the log id
         @logs = Log.all.order(distance: :desc) #pass the erb an instance variable to iterate over
-        @total_distance = Log.all.sum(:distance)
         erb :'logs/index' #use instance variables to render erb 
     end 
 
@@ -36,7 +35,7 @@ class LogsController < ApplicationController
     get '/logs/:id/edit' do 
        not_logged_in_helper #determine if a user is logged in, else redirect to login
        find_log_by_id    #find the log id
-            if @log && @log.user == current_user
+            if current_log_user_match?
                 erb :'/logs/edit'
             else 
                 redirect to "/users/#{current_user.id}"
@@ -47,7 +46,7 @@ class LogsController < ApplicationController
     patch "/logs/:id" do 
        not_logged_in_helper #determine if a user is logged in, else redirect to login
        find_log_by_id #find the log id
-       if @log && @log.user == current_user
+       if current_log_user_match?
             @log.update(params[:log]) #click submit to update the log - no need to write update out for all params
             redirect "/logs/#{@log.id}" #redirect to log show page
        else 
@@ -58,7 +57,7 @@ class LogsController < ApplicationController
     delete '/logs/:id' do 
         not_logged_in_helper #determine if a user is logged in, else redirect to login
         find_log_by_id #find the log id
-        if @log && @log.user == current_user
+        if current_log_user_match?
             @log.destroy
             redirect "/logs"
         else 
@@ -71,5 +70,9 @@ class LogsController < ApplicationController
 
     def find_log_by_id
         @log = Log.find_by_id(params[:id])
+    end 
+
+    def current_log_user_match?
+        @log && @log.user == current_user 
     end 
 end 
